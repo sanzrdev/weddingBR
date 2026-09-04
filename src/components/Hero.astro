@@ -1,0 +1,30 @@
+---
+interface Props {
+  bride: string;
+  groom: string;
+  date: string;
+}
+const { bride, groom, date } = Astro.props;
+---
+
+<section
+  class="flex min-h-[68svh] flex-col items-center justify-center px-6 py-16 text-center md:min-h-[74svh]"
+>
+  <p class="mb-6 text-xs uppercase tracking-[0.35em] text-stone-500" data-reveal>
+    Nuestra boda
+  </p>
+
+  <h1 class="text-6xl font-medium leading-none" data-reveal style="--reveal-delay: 120ms">
+    {bride} <span class="text-4xl">&</span> {groom}
+  </h1>
+
+  <p class="mt-8 text-sm tracking-[0.2em] text-stone-600" data-reveal style="--reveal-delay: 240ms">
+    {date}
+  </p>
+
+  <div class="mt-10 h-px w-12 bg-stone-400" data-reveal style="--reveal-delay: 340ms"></div>
+
+  <p class="mt-8 text-[0.65rem] uppercase tracking-[0.24em] text-stone-400" data-reveal style="--reveal-delay: 420ms">
+    Desliza para conocer los detalles
+  </p>
+</section>

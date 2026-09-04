@@ -1,0 +1,41 @@
+---
+interface Image {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  images: Image[];
+}
+
+const { images } = Astro.props;
+---
+
+<section class="bg-white px-6 py-24">
+  <div class="mx-auto max-w-md">
+    <header class="text-center" data-reveal>
+      <p class="text-xs uppercase tracking-[0.35em] text-stone-500">
+        Algunos momentos
+      </p>
+
+      <h2 class="mt-4 font-serif text-4xl font-medium">
+        Nuestra historia
+      </h2>
+    </header>
+
+    <div class="mt-14 space-y-8">
+      {
+        images.map((image, index) => (
+          <figure class={index === 1 ? "px-8" : ""} data-reveal style={`--reveal-delay: ${index * 100}ms`}>
+            <img
+              src={image.src}
+              alt={image.alt}
+              loading="lazy"
+              class="gallery-image aspect-[4/5] w-full object-cover"
+            />
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

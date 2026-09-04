@@ -1,0 +1,77 @@
+---
+interface Props {
+  target: string;
+}
+
+const { target } = Astro.props;
+---
+
+<section class="texture-stone px-6 py-16 sm:py-20" aria-labelledby="countdown-title">
+  <div class="mx-auto max-w-md text-center">
+    <p class="text-xs uppercase tracking-[0.35em] text-stone-500" data-reveal>
+      La cuenta regresiva
+    </p>
+
+    <h2 id="countdown-title" class="mt-4 text-4xl font-medium" data-reveal style="--reveal-delay: 100ms">
+      Faltan para celebrar
+    </h2>
+
+    <div
+      class="mt-10 grid grid-cols-4 gap-3"
+      data-countdown
+      data-target={target}
+      data-reveal
+      style="--reveal-delay: 220ms"
+      aria-live="polite"
+      aria-label="Tiempo restante para la recepción"
+    >
+      <div>
+        <p class="font-serif text-4xl" data-value="days">—</p>
+        <p class="mt-2 text-[0.65rem] uppercase tracking-[0.18em] text-stone-500">Días</p>
+      </div>
+      <div>
+        <p class="font-serif text-4xl" data-value="hours">—</p>
+        <p class="mt-2 text-[0.65rem] uppercase tracking-[0.18em] text-stone-500">Horas</p>
+      </div>
+      <div>
+        <p class="font-serif text-4xl" data-value="minutes">—</p>
+        <p class="mt-2 text-[0.65rem] uppercase tracking-[0.18em] text-stone-500">Minutos</p>
+      </div>
+      <div>
+        <p class="font-serif text-4xl" data-value="seconds">—</p>
+        <p class="mt-2 text-[0.65rem] uppercase tracking-[0.18em] text-stone-500">Segundos</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const countdown = document.querySelector<HTMLElement>("[data-countdown]");
+
+  if (countdown) {
+    const target = new Date(countdown.dataset.target ?? "").getTime();
+    const values = {
+      days: countdown.querySelector<HTMLElement>('[data-value="days"]'),
+      hours: countdown.querySelector<HTMLElement>('[data-value="hours"]'),
+      minutes: countdown.querySelector<HTMLElement>('[data-value="minutes"]'),
+      seconds: countdown.querySelector<HTMLElement>('[data-value="seconds"]'),
+    };
+
+    const updateCountdown = () => {
+      const remaining = Math.max(0, target - Date.now());
+      const totalSeconds = Math.floor(remaining / 1000);
+      const days = Math.floor(totalSeconds / 86_400);
+      const hours = Math.floor((totalSeconds % 86_400) / 3_600);
+      const minutes = Math.floor((totalSeconds % 3_600) / 60);
+      const seconds = totalSeconds % 60;
+
+      values.days!.textContent = String(days);
+      values.hours!.textContent = String(hours).padStart(2, "0");
+      values.minutes!.textContent = String(minutes).padStart(2, "0");
+      values.seconds!.textContent = String(seconds).padStart(2, "0");
+    };
+
+    updateCountdown();
+    window.setInterval(updateCountdown, 1_000);
+  }
+</script>

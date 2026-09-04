@@ -1,0 +1,45 @@
+---
+interface Props {
+  image: string;
+}
+
+const { image } = Astro.props;
+---
+
+<section class="texture-stone px-6 py-24">
+  <div class="mx-auto max-w-md">
+    <div class="text-center" data-reveal>
+      <p class="text-xs uppercase tracking-[0.35em] text-stone-500">
+        Nuestra historia
+      </p>
+
+      <h2 class="mt-4 font-serif text-4xl font-medium">
+        Dos caminos, un destino
+      </h2>
+    </div>
+
+    <div class="mt-12 md:translate-x-6">
+      <img
+        src={image}
+        alt="B&R"
+        class="story-image aspect-[4/5] w-full object-cover"
+        data-reveal
+        style="--reveal-delay: 120ms"
+      />
+    </div>
+
+    <div class="mt-10 space-y-5 text-center text-sm leading-7 text-stone-600" data-reveal style="--reveal-delay: 180ms">
+      <p>
+        Hay historias que comienzan sin que nos demos cuenta.
+        La nuestra comenzó con una mirada, una conversación
+        y muchas pequeñas coincidencias.
+      </p>
+
+      <p>
+        Con el tiempo descubrimos que queríamos compartir
+        mucho más que momentos: queríamos compartir la vida.
+      </p>
+    </div>
+  </div>
+</section>
+

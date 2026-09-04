@@ -1,0 +1,91 @@
+---
+interface Event {
+  type: string;
+  time: string;
+  place: string;
+  mapUrl: string;
+}
+
+interface Props {
+    events: Event[];
+}
+
+const { events } = Astro.props;
+---
+
+<section class="bg-white px-6 py-24" aria-labelledby="schedule-title">
+  <div class="mx-auto max-w-xl">
+    <header class="mx-auto max-w-md text-center" data-reveal>
+      <p class="text-xs uppercase tracking-[0.35em] text-stone-500">
+        Celebremos juntos
+      </p>
+
+      <h2 id="schedule-title" class="mt-4 text-4xl font-medium">
+        El gran día
+      </h2>
+
+      <p class="mt-5 text-sm leading-6 text-stone-600">
+        Acompáñanos en cada momento de nuestra celebración.
+      </p>
+    </header>
+
+    <ol class="mt-16">
+      {
+        events.map((event, index) => {
+          const isChurch = event.place.toLowerCase().includes("parroquia");
+          const isLast = index === events.length - 1;
+
+          return (
+            <li class="relative grid grid-cols-[4.75rem_3.5rem_1fr] gap-x-4 pb-14 last:pb-0 sm:grid-cols-[6rem_4rem_1fr] sm:gap-x-6" data-reveal style={`--reveal-delay: ${index * 100}ms`}>
+              <time class="pt-3 text-right font-serif text-2xl text-stone-800">
+                {event.time}
+              </time>
+
+              <div class="relative flex justify-center">
+                {!isLast && (
+                  <span class="absolute top-14 bottom-0 w-px bg-stone-200" aria-hidden="true" />
+                )}
+
+                <div class="relative z-10 flex size-14 items-center justify-center rounded-full border border-stone-200 bg-stone-100 text-stone-700 shadow-sm">
+                  {isChurch ? (
+                    <svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                      <path d="M12 3v5M9.5 5.5h5M5 21V10l7-5 7 5v11M3 21h18M9 21v-5h6v5M8 12h.01M16 12h.01" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                      <path d="M4 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16M2 21h20M8 7h4M8 11h4M8 15h4M16 9h2M16 13h2M9 21v-2h2v2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  )}
+                </div>
+              </div>
+
+              <article class="pt-2">
+                <p class="text-xs uppercase tracking-[0.25em] text-stone-500">
+                  {isChurch ? "Iglesia" : "Salón"}
+                </p>
+                <h3 class="mt-2 text-2xl font-medium leading-tight text-stone-800">
+                  {event.type}
+                </h3>
+                <p class="mt-2 text-sm leading-6 text-stone-600">
+                  {event.place}
+                </p>
+                <a
+                  href={event.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-5 inline-flex items-center gap-2 border-b border-stone-400 pb-1 text-xs font-medium uppercase tracking-[0.18em] text-stone-700 transition-colors hover:border-stone-800 hover:text-stone-950 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-stone-700"
+                >
+                  <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                    <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="12" cy="10" r="2.5" />
+                  </svg>
+                  Cómo llegar
+                </a>
+              </article>
+            </li>
+          );
+        })
+      }
+    </ol>
+  </div>
+</section>
