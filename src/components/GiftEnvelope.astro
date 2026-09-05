@@ -1,0 +1,159 @@
+<section class="texture-paper px-6 py-24" aria-labelledby="gift-title">
+  <div class="mx-auto max-w-md text-center">
+    <header data-reveal>
+      <p class="text-xs uppercase tracking-[0.35em] text-stone-500">
+        Un detalle especial
+      </p>
+      <h2 id="gift-title" class="mt-4 text-4xl font-medium">
+        Mesa de regalos
+      </h2>
+      
+      <p class="mt-6 text-sm leading-7 text-stone-600" data-reveal style="--reveal-delay: 260ms">
+      Gracias por su cariño y su presencia. Contaremos con un baúl en la boda en el que podrán depositar este sobre con su regalo. Por favor, no olviden añadir una tarjeta con sus deseos para nuestro matrimonio: ¡será el mejor regalo
+    </p>
+    </header>
+
+    <div class="gift-scene mx-auto mt-16 w-full max-w-[15rem]" data-reveal style="--reveal-delay: 120ms">
+      <div class="gift-envelope" aria-label="Sobre de regalo abierto">
+        <div class="gift-letter">
+          <div class="flex size-full items-center justify-center border border-stone-200 px-7">
+            <p class="font-serif text-xl leading-tight text-stone-700">
+               B & R
+            </p>
+          </div>
+        </div>
+
+        <div class="gift-envelope-back" aria-hidden="true"></div>
+        <div class="gift-envelope-flap" aria-hidden="true"></div>
+        <div class="gift-envelope-pocket" aria-hidden="true"></div>
+        <div class="gift-wax-seal" aria-label="Sello de cera con las iniciales B y R">
+          <span>B<span class="text-base">&</span>R</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-24" data-reveal>
+      <div class="mx-auto h-px w-12 bg-stone-400"></div>
+      <p class="mt-10 text-xs uppercase tracking-[0.35em] text-stone-500">
+        Con cariño
+      </p>
+      <h3 class="mt-4 text-4xl font-medium">
+        Gracias por acompañarnos
+      </h3>
+      <p class="mt-6 text-sm leading-7 text-stone-600">
+        Nos hace muy felices compartir este día tan especial contigo. Tu presencia hará nuestra celebración aún más memorable.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gift-scene {
+    perspective: 900px;
+  }
+
+  .gift-envelope {
+    position: relative;
+    height: 9.5rem;
+  }
+
+  .gift-envelope-back {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 8.4rem;
+    background: #cfb28b;
+    box-shadow: 0 1.1rem 1.8rem rgba(41, 39, 37, 0.13);
+  }
+
+  .gift-letter {
+    position: absolute;
+    z-index: 2;
+    right: 0.8rem;
+    bottom: 0.8rem;
+    left: 0.8rem;
+    height: 7.6rem;
+    padding: 0.35rem;
+    background: #fffdf9;
+    box-shadow: 0 0.55rem 1rem rgba(41, 39, 37, 0.12);
+    transform: translateY(2.3rem);
+    transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1) 226ms;
+  }
+
+  .gift-envelope-flap {
+    position: absolute;
+    z-index: 4;
+    top: 1.1rem;
+    right: 0;
+    left: 0;
+    height: 5.9rem;
+    background: #dec8a7;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top center;
+    transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1) 210ms;
+    backface-visibility: hidden;
+  }
+
+  .gift-envelope-pocket {
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 8.4rem;
+    background:
+      linear-gradient(35deg, transparent 49.5%, rgba(183, 155, 114, 0.36) 50%, transparent 50.5%),
+      linear-gradient(-35deg, transparent 49.5%, rgba(183, 155, 114, 0.36) 50%, transparent 50.5%),
+      #d8c3a5;
+    clip-path: polygon(0 0, 50% 52%, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .gift-scene.is-visible .gift-letter {
+    transform: translateY(-4.2rem);
+  }
+
+  .gift-scene.is-visible .gift-envelope-flap {
+    transform: rotateX(180deg);
+  }
+
+  .gift-wax-seal {
+    position: absolute;
+    z-index: 5;
+    bottom: 2.35rem;
+    left: 50%;
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(113, 69, 58, 0.6);
+    border-radius: 999px;
+    background:
+      radial-gradient(circle at 34% 28%, rgba(255, 232, 210, 0.38) 0 5%, transparent 6%),
+      radial-gradient(circle at 68% 72%, rgba(73, 38, 35, 0.22), transparent 45%),
+      #9a6154;
+    box-shadow: 0 0.2rem 0.35rem rgba(41, 39, 37, 0.22), inset 0 0 0 0.18rem rgba(255, 235, 215, 0.15);
+    color: #fff7ec;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.08em;
+    transform: translateX(-50%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gift-letter,
+    .gift-envelope-flap {
+      transition: none;
+    }
+
+    .gift-letter {
+      transform: translateY(-4.2rem);
+    }
+
+    .gift-envelope-flap {
+      transform: rotateX(180deg);
+    }
+  }
+</style>

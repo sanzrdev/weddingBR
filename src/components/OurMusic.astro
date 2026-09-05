@@ -1,13 +1,15 @@
 ---
 interface Props {
+  title: string;
+  coverUrl: string;
   spotifyEmbedUrl: string;
   spotifyUrl: string;
 }
 
-const { spotifyEmbedUrl, spotifyUrl } = Astro.props;
+const { title, coverUrl, spotifyEmbedUrl, spotifyUrl } = Astro.props;
 ---
 
-<section class="texture-paper px-6 py-24" aria-labelledby="music-title">
+<section class="section-transition texture-paper px-6 py-24" style="--transition-from: #ffffff" aria-labelledby="music-title">
   <div class="mx-auto max-w-md text-center">
     <div data-reveal>
       <p class="text-xs uppercase tracking-[0.35em] text-stone-500">
@@ -21,7 +23,22 @@ const { spotifyEmbedUrl, spotifyUrl } = Astro.props;
       </p>
     </div>
 
-    <div class="mt-12 overflow-hidden rounded-sm border border-stone-200 bg-white p-3 shadow-[0_16px_35px_rgba(41,39,37,0.08)]" data-reveal style="--reveal-delay: 140ms">
+    <figure class="mx-auto mt-12 w-full max-w-[19rem] -rotate-1 bg-white p-3 pb-6 shadow-[0_18px_38px_rgba(41,39,37,0.16)] transition-transform duration-500 hover:rotate-0" data-reveal style="--reveal-delay: 140ms">
+      <div class="aspect-square overflow-hidden bg-stone-200">
+        <img
+          src={coverUrl}
+          alt={`Portada de ${title}`}
+          class="size-full object-cover"
+          loading="lazy"
+        />
+      </div>
+      <figcaption class="pt-5 text-center">
+        <p class="font-serif text-2xl text-stone-800">{title}</p>
+        <p class="mt-1 text-[0.6rem] uppercase tracking-[0.22em] text-stone-500">Nuestra canción</p>
+      </figcaption>
+    </figure>
+
+    <div class="mt-8 overflow-hidden rounded-sm border border-stone-200 bg-white p-2 shadow-[0_12px_28px_rgba(41,39,37,0.06)]" data-reveal style="--reveal-delay: 220ms">
       <iframe
         title="Nuestra canción en Spotify"
         src={spotifyEmbedUrl}

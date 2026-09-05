@@ -16,6 +16,8 @@ export const wedding = {
   },
 
   music: {
+    title: "La Cosa Más Bella",
+    coverUrl: "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e0282275cd567e80f83c921fccd",
     spotifyEmbedUrl: "https://open.spotify.com/embed/track/1EZypwk0xcj64ZLAglhLs2?utm_source=generator",
     spotifyUrl: "https://open.spotify.com/intl-es/track/1EZypwk0xcj64ZLAglhLs2?si=78bf3b93936a46e5",
   },

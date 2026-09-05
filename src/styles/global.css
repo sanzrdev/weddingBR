@@ -40,6 +40,32 @@ h3 {
     repeating-linear-gradient(0deg, rgba(183, 155, 114, 0.06) 0 1px, transparent 1px 7px);
 }
 
+.texture-sand {
+  background-color: var(--color-sand);
+  background-image:
+    linear-gradient(140deg, rgba(255, 255, 255, 0.28), transparent 52%),
+    radial-gradient(rgba(255, 255, 255, 0.26) 0.6px, transparent 0.7px);
+  background-size: 100% 100%, 12px 12px;
+}
+
+.section-transition {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.section-transition::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 10rem;
+  content: "";
+  background: linear-gradient(to bottom, var(--transition-from), transparent);
+  pointer-events: none;
+}
+
 .gallery-image {
   transform: scale(1.02);
   transition: transform 700ms ease;
