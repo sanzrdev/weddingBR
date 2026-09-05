@@ -7,9 +7,9 @@ import OurStory from "../components/OurStory.astro"
 import Gallery from "../components/Gallery.astro";
 import Countdown from "../components/Countdown.astro";
 import Rsvp from "../components/Rsvp.astro";
-import Footer from "../components/Footer.astro";
 import OurMusic from "../components/OurMusic.astro";
 import GiftEnvelope from "../components/GiftEnvelope.astro";
+import ImageFooter from "../components/ImageFooter.astro";
 ---
 
 <Layout
@@ -38,9 +38,5 @@ import GiftEnvelope from "../components/GiftEnvelope.astro";
 
   </main>
 
-  <Footer
-    bride={wedding.couple.bride}
-    groom={wedding.couple.groom}
-    date={`${wedding.date.day} · ${wedding.date.month} · ${wedding.date.year}`}
-  />
+  <ImageFooter />
 </Layout>
